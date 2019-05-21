@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import entities.Event;
+import entities.User;
 import jpa.EntityManagerHelper;
 
 public class PollsService {
@@ -39,8 +40,18 @@ public class PollsService {
 	public Event getPoll(Long id) {
 		EntityManager entityManager = EntityManagerHelper.getEntityManager();
 		Event event = entityManager.getReference(Event.class, id);
-		EntityManagerHelper.closeEntityManager();
 		return event;
+	}
+
+	public void addUser(Long eventId, User user) {
+		EntityManager manager = EntityManagerHelper.getEntityManager();
+		EntityManagerHelper.beginTransaction();
+		Event event = getPoll(eventId);
+		event.addUser(user);
+		manager.persist(event);
+		manager.persist(user);
+		EntityManagerHelper.commit();
+
 	}
 	
 }

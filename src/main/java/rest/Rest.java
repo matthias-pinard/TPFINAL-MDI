@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 
 import Services.PollsService;
 import entities.Event;
+import entities.User;
 
 @Path("/polls")
 public class Rest {
@@ -35,5 +36,13 @@ public class Rest {
 
 		PollsService pollsService = new PollsService();
 		pollsService.createPolls(event);
+	}
+
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/add/{id}")
+	public void addUser(@PathParam("id") Long id, User user) {
+		PollsService pollsService = new PollsService();
+		pollsService.addUser(id, user);
 	}
 }
