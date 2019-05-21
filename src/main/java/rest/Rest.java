@@ -32,10 +32,11 @@ public class Rest {
 	}
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void postPolls(Event event) {
+	@Produces(MediaType.APPLICATION_JSON)
+	public Event postPolls(Event event) {
 
 		PollsService pollsService = new PollsService();
-		pollsService.createPolls(event);
+		return pollsService.createPolls(event);
 	}
 
 	@POST

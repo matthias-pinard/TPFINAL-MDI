@@ -15,11 +15,10 @@ public class PollsService {
 		
 	}
 	
-	public void createPolls(Event polls) {
+	public Event createPolls(Event polls) {
 		EntityManager manager = EntityManagerHelper.getEntityManager();
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
-
 
 		try {
 			manager.persist(polls);
@@ -28,7 +27,7 @@ public class PollsService {
 			e.printStackTrace();
 		}
 		tx.commit();
-		//manager.close();
+		return polls;
 	}
 	
 	public List<Event> getPolls() {
