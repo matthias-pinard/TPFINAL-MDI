@@ -4,9 +4,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.PersistenceContext;
 
-import entities.Polls;
+import entities.Event;
 
 public class JpaTest {
 
@@ -21,7 +20,7 @@ public class JpaTest {
 
 
 		try {
-			Polls polls = new Polls();
+			Event polls = new Event();
 			polls.setName("testPolls");
 			manager.persist(polls);
 		} catch (Exception e) {
@@ -29,8 +28,8 @@ public class JpaTest {
 		}
 		tx.commit();
 
-		List<Polls> lPolls = manager.createQuery("Select a from Polls a", Polls.class).getResultList();
-		System.out.println(lPolls);
+		List<Event> lEvents = manager.createQuery("Select a from Polls a", Event.class).getResultList();
+		System.out.println(lEvents);
 		manager.close();
 		EntityManagerHelper.closeEntityManagerFactory();
 		//		factory.close();

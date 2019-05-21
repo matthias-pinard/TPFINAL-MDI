@@ -3,8 +3,9 @@ package Services;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
-import entities.Polls;
+import entities.Event;
 import jpa.EntityManagerHelper;
 
 public class PollsService {
@@ -13,19 +14,33 @@ public class PollsService {
 		
 	}
 	
-	public void createPolls(Polls polls) {
-		EntityManager entityManager = EntityManagerHelper.getEntityManager();
-		EntityManagerHelper.beginTransaction();
-		entityManager.persist(polls);
-		EntityManagerHelper.commit();
-		EntityManagerHelper.closeEntityManager();
+	public void createPolls(Event polls) {
+		EntityManager manager = EntityManagerHelper.getEntityManager();
+		EntityTransaction tx = manager.getTransaction();
+		tx.begin();
+
+
+		try {
+			manager.persist(polls);
+			manager.flush();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		tx.commit();
+		//manager.close();
 	}
 	
-	public List<Polls> getPolls() {
+	public List<Event> getPolls() {
 		EntityManager entityManager = EntityManagerHelper.getEntityManager();
-		List<Polls> lPolls = entityManager.createQuery("Select a from Polls a", Polls.class).getResultList();
+		List<Event> lEvents = entityManager.createQuery("Select a from Event a", Event.class).getResultList();
+		return lEvents;
+	}
+
+	public Event getPoll(Long id) {
+		EntityManager entityManager = EntityManagerHelper.getEntityManager();
+		Event event = entityManager.getReference(Event.class, id);
 		EntityManagerHelper.closeEntityManager();
-		return lPolls;
+		return event;
 	}
 	
 }
