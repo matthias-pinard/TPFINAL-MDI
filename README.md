@@ -16,6 +16,6 @@ Pour le lancer manuellement:
 - lancer la base de données avec le script run-hsqldb-server.sh (sur le port 9001)
 - lancer l'api rest avec mvn jetty:run (sur le port 8080)
 - cloner le front, puis faire un npm install et npm start
-- accéder au site web à sur [localhost:3000](localhost:3000)
+- accéder au site web sur [localhost:3000](http://localhost:3000)
 
 Lien vers le repo git du front: [TPFINAL-MDI-FRONT](https://github.com/Gillian-B/TPFINAL-MDI-FRONT)
