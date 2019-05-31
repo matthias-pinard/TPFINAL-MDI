@@ -13,4 +13,11 @@ C'est également dans ce fichier que l'on autorise les requêtes CORS, ce qui es
 
 Pour tester notre application il suffit d'utiliser le docker-compose se trouvant dans le dossier docker, et il va lancer la base de donnée sur le port 9001, l'api sur le port 8080, et le front sur le port 3000.
 
+Pour le lancer manuellement:
+- cloner ce repo
+- lancer la base de données avec le script run-hsqldb-server.sh
+- lancer l'api rest avec mvn jetty:run
+- cloner le front, puis faire un npm install et npm start
+- accéder au site web à sur [localhost:3000](localhost:3000)
+
 Lien vers le repo git du front: [TPFINAL-MDI-FRONT](https://github.com/Gillian-B/TPFINAL-MDI-FRONT)
