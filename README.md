@@ -11,12 +11,10 @@ Puis nous avons réaliser une API à l'aide de Rest Easy et de l'ORM hibernate a
 La partie la plus compliqué de ce TP a été de trouver comment lancer l'api REST, ce que nous faisont à l'aide du plugin maven jetty, et nous spécifions la ressource REST à lancer dans application/MyApp.java.
 C'est également dans ce fichier que l'on autorise les requêtes CORS, ce qui est nécéssaire afin de pouvoir appeler l'API depuis un navigateur.
 
-Pour tester notre application il suffit d'utiliser le docker-compose se trouvant dans le dossier docker, et il va lancer la base de donnée sur le port 9001, l'api sur le port 8080, et le front sur le port 3000.
-
 Pour le lancer manuellement:
 - cloner ce repo
-- lancer la base de données avec le script run-hsqldb-server.sh
-- lancer l'api rest avec mvn jetty:run
+- lancer la base de données avec le script run-hsqldb-server.sh (sur le port 9001)
+- lancer l'api rest avec mvn jetty:run (sur le port 8080)
 - cloner le front, puis faire un npm install et npm start
 - accéder au site web à sur [localhost:3000](localhost:3000)
 
